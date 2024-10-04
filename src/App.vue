@@ -3,7 +3,7 @@
   <div class="container">
     <Balance :total="+total"/>
     <IncomeExpenses :income="+income" :expenses="+expenses"/>
-    <TransactionList transactions="transactions"/>
+    <TransactionList transactions="transactions" @transactionDeleted="handleTransactionDeleted"/>
     <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
   </div>
 </template>
@@ -55,12 +55,23 @@
       text: transactionData.text,
       amout: transactionData.amount,
     });
-  }
+
+    toast.success('Transaction added.');
+  };
 
   //Generate Id
   const generateUniqueId = () => {
     return Math.floor(Math.random() * 10000000)
-  }
+  };
+
+  //Delete Transaction
+  const handleTransactionDeleted = (id) => {
+    transactions.value = transactions.value.filter(
+    (transaction) => transaction.id !== id
+    );
+
+    toast.success('Transaction deleted.');
+  };
 
   /*
     // we do not need this when using 'setup' on <script>; '<script setup> ' 
