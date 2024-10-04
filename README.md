@@ -1,4 +1,4 @@
-Transaction Tracker App
+# Transaction Tracker App
 
 A simple Transaction Tracker application built with Vue.js. This app enables users to manage their financial transactions, categorizing them as income or expenses, with data persistence using localStorage.
 
