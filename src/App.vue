@@ -3,7 +3,7 @@
   <div class="container">
     <Balance :total="+total"/>
     <IncomeExpenses :income="+income" :expenses="+expenses"/>
-    <TransactionList transactions="transactions" @transactionDeleted="handleTransactionDeleted"/>
+    <TransactionList :transactions="transactions" @transactionDeleted="handleTransactionDeleted"/>
     <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
   </div>
 </template>
@@ -17,11 +17,19 @@
 
   import { useToast } from 'vue-toastification';
 
-  import { ref, computed } from 'vue';
+  import { ref, computed, onMounted } from 'vue';
 
   const toast = useToast();
 
   const transactions = ref([]);
+
+  onMounted(() => {
+  const savedTransactions = JSON.parse(localStorage.getItem('transactions'));
+
+    if (savedTransactions) {
+      transactions.value = savedTransactions;
+    }
+  });
 
   //Get total
   const total =computed(() => {
@@ -34,18 +42,16 @@
   const income = computed(() => {
     return transactions.value
     .filter((transaction) => transaction.amount > 0)
-    .reduce((acc, transaction) => {
-      return acc + transaction.amount;
-    }, 0).toFixed(2); // 2 decimal places
+    .reduce((acc, transaction) => acc + transaction.amount, 0)
+    .toFixed(2); // 2 decimal places
   });
 
   //Get expenses
   const expenses = computed(() => {
     return transactions.value
     .filter((transaction) => transaction.amount < 0)
-    .reduce((acc, transaction) => {
-      return acc + transaction.amount;
-    }, 0).toFixed(2); // 2 decimal places
+    .reduce((acc, transaction) => acc + transaction.amount, 0)
+    .toFixed(2); // 2 decimal places
   });
 
   //Add transaction
@@ -53,8 +59,10 @@
     transactions.value.push({
       id: generateUniqueId(),
       text: transactionData.text,
-      amout: transactionData.amount,
+      amount: transactionData.amount,
     });
+
+    saveTransactionsToLocalStorage();
 
     toast.success('Transaction added.');
   };
@@ -70,8 +78,15 @@
     (transaction) => transaction.id !== id
     );
 
+    saveTransactionsToLocalStorage();
+
     toast.success('Transaction deleted.');
   };
+
+  // Save transactions to local storage
+    const saveTransactionsToLocalStorage = () => {
+      localStorage.setItem('transactions', JSON.stringify(transactions.value));
+    };
 
   /*
     // we do not need this when using 'setup' on <script>; '<script setup> ' 
