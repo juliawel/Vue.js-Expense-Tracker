@@ -2,7 +2,7 @@ Transaction Tracker App
 
 A simple Transaction Tracker application built with Vue.js. This app enables users to manage their financial transactions, categorizing them as income or expenses, with data persistence using localStorage.
 
---Features--
+## Features
 
 Add Transactions: Users can input new transactions, specifying text and amount;
 Edit Transactions: Modify transaction details directly from the list;
@@ -10,7 +10,7 @@ Delete Transactions: Easily remove transactions that are no longer needed;
 Income and Expense Tracking: Clearly displays total income and expenses;
 LocalStorage Persistence: Saves transactions so that they remain available even after refreshing the page;
 
---Technologies--
+## Technologies
 
 Vue 3;
 JavaScript;
@@ -18,7 +18,7 @@ HTML/CSS;
 LocalStorage for data persistence;
 Vue Toastification for notifications;
 
---What Did I Learn?--
+## What Did I Learn?
 
 Vue.js Fundamentals: Gained hands-on experience with Vue.js features like ref, computed, and lifecycle hooks (onMounted);
 State Management: Learned how to effectively manage component state and persist data using localStorage;
