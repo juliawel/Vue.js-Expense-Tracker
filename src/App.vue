@@ -17,9 +17,7 @@
 
   import { ref, computed } from 'vue';
 
-  const transactions = [
-
-  ];
+  const transactions = ref([]);
 
   //Get total
   const total =computed(() => {
