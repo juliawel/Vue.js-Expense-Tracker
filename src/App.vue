@@ -1,10 +1,10 @@
 <template>
   <Header/>
   <div class="container">
-    <Balance :total="total"/>
+    <Balance :total="+total"/>
     <IncomeExpenses :income="+income" :expenses="+expenses"/>
     <TransactionList transactions="transactions"/>
-    <AddTransaction/>
+    <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
   </div>
 </template>
 
@@ -15,7 +15,11 @@
   import TransactionList from './components/TransactionList.vue';
   import AddTransaction from './components/AddTransaction.vue';
 
+  import { useToast } from 'vue-toastification';
+
   import { ref, computed } from 'vue';
+
+  const toast = useToast();
 
   const transactions = ref([]);
 
@@ -43,6 +47,20 @@
       return acc + transaction.amount;
     }, 0).toFixed(2); // 2 decimal places
   });
+
+  //Add transaction
+  const handleTransactionSubmitted = (transactionData) => {
+    transactions.value.push({
+      id: generateUniqueId(),
+      text: transactionData.text,
+      amout: transactionData.amount,
+    });
+  }
+
+  //Generate Id
+  const generateUniqueId = () => {
+    return Math.floor(Math.random() * 10000000)
+  }
 
   /*
     // we do not need this when using 'setup' on <script>; '<script setup> ' 
