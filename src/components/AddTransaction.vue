@@ -7,7 +7,7 @@
         </div>
         <div class="form-control">
             <label for="amount">Amount 
-                <br/>(negative-expense, positive - income)
+                <br/>(negative - expense, positive - income)
             </label>
             <input type="text" id="amount" v-model="amount" placeholder="Enter amount...">
         </div>
@@ -22,7 +22,7 @@
     const text = ref('');
     const amount = ref('');
 
-    const emit = defineEmits('transactionSubmitted');
+    const emit = defineEmits(['transactionSubmitted']);
 
     const toast = useToast();
 
