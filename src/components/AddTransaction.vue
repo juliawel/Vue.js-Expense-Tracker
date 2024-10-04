@@ -3,18 +3,25 @@
     <form id="form" @submit.prevent="onSubmit">
         <div class="form-control">
             <label for="text">Text</label>
-            <input type="text" id="text" placeholder="Enter a text...">
+            <input type="text" id="text" v-model="text" placeholder="Enter a text...">
         </div>
         <div class="form-control">
             <label for="amount">Amount 
                 <br/>(negative-expense, positive - income)
             </label>
-            <input type="number" id="amount" placeholder="Enter amount...">
+            <input type="text" id="amount" v-model="amount" placeholder="Enter amount...">
         </div>
         <button class="btn">Add transaction</button>
     </form>
 </template>
+    
+<script setup>
+    import {ref} from 'vue';
 
-<script>
+    const text = ref('');
+    const amount = ref('');
 
+    const onSubmit = () => {
+        console.log(text.value, amount.value);
+    }
 </script>
