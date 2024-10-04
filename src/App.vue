@@ -3,25 +3,33 @@
   <div class="container">
     <Balance/>
     <IncomeExpenses/>
-    <TransactionList/>
+    <TransactionList transactions="transactions"/>
     <AddTransaction/>
   </div>
 </template>
 
-<script>  
+<script setup>  
   import Header from './components/Header.vue';
   import Balance from './components/Balance.vue';
   import IncomeExpenses from './components/IncomeExpenses.vue';
   import TransactionList from './components/TransactionList.vue';
   import AddTransaction from './components/AddTransaction.vue';
 
-  export default {
-    components: {
+  import { ref } from 'vue';
+
+  const transactions = [
+
+  ];
+
+  /*
+    // we do not need this when using 'setup' on <script>; '<script setup> ' 
+    export default {
+      components: {
       Header,
       Balance,
       IncomeExpenses,
       TransactionList,
       AddTransaction,
-    }
-  }
+      }
+  ''}*/
 </script>
