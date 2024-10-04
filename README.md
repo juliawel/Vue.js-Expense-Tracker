@@ -1,6 +1,6 @@
-Todo List App
+Transaction Tracker App
 
-A simple Todo List application built with Vue.js. This app allows users to create, categorize, and manage their tasks, with data persistence using localStorage. Additionally, it features toast notifications for user feedback.
+A simple Transaction Tracker application built with Vue.js. This app enables users to manage their financial transactions, categorizing them as income or expenses, with data persistence using localStorage.
 
 --Features--
 
