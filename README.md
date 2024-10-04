@@ -1,29 +1,30 @@
-# vue-expense-tracker
+Todo List App
 
-This template should help get you started developing with Vue 3 in Vite.
+A simple Todo List application built with Vue.js. This app allows users to create, categorize, and manage their tasks, with data persistence using localStorage. Additionally, it features toast notifications for user feedback.
 
-## Recommended IDE Setup
+--Features--
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Add Transactions: Users can input new transactions, specifying text and amount;
+Edit Transactions: Modify transaction details directly from the list;
+Delete Transactions: Easily remove transactions that are no longer needed;
+Income and Expense Tracking: Clearly displays total income and expenses;
+LocalStorage Persistence: Saves transactions so that they remain available even after refreshing the page;
 
-## Customize configuration
+--Technologies--
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Vue 3;
+JavaScript;
+HTML/CSS;
+LocalStorage for data persistence;
+Vue Toastification for notifications;
 
-## Project Setup
+--What Did I Learn?--
 
-```sh
-npm install
-```
+Vue.js Fundamentals: Gained hands-on experience with Vue.js features like ref, computed, and lifecycle hooks (onMounted);
+State Management: Learned how to effectively manage component state and persist data using localStorage;
+Form Handling: Worked with form inputs, utilizing v-model bindings, and implementing form submission using Vue's event modifiers;
+LocalStorage Integration: Successfully implemented persistent data storage for transactions;
+Toast notifications: Integrated toast messages for user feedback on actions performed within the app;
 
-### Compile and Hot-Reload for Development
+Acknowledgments: This project was inspired by a tutorial from [https://www.youtube.com/watch?v=hNPwdOZ3qFU&ab_channel=TraversyMedia], which helped guide the development of this Expense Tracker application.
 
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
